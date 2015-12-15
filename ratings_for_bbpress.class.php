@@ -139,11 +139,11 @@ class Elm_Ratings_For_BBPress {
 			add_action( 'admin_notices', array( $this, 'missing_rating_manager_warning' ) );
 			
 			return false;
-		} /*else if ( ! function_exists( 'gllr_init' ) ) {
-			add_action( 'admin_notices', array( $this, 'missing_bws_gallery_warning' ) );
+		} else if ( !class_exists( 'bbPress' ) ) {
+			add_action( 'admin_notices', array( $this, 'missing_bbpress_warning' ) );
 			
 			return false;
-		}*/
+		}
 		
 	}
 	
@@ -162,6 +162,16 @@ class Elm_Ratings_For_BBPress {
 	public function missing_rating_manager_warning() {
 	?>
 		<div class="message error"><p><?php printf(__( 'Ratings for bbPress is enabled but not effective. It requires <a href="%s" target="_blank">%s</a> in order to work.', 'woocommerce-multilingual'), 'https://www.elementous.com/product/premium-wordpress-plugins/rating-manager/', 'Rating Manager' ); ?></p></div>
+	<?php
+	}
+	
+	/*
+	 * Missing bbPress plugin notification.
+	 *
+	*/
+	public function missing_bbpress_warning() {
+	?>
+		<div class="message error"><p><?php printf(__( 'Ratings for bbPress is enabled but not effective. It requires <a href="%s" target="_blank">%s</a> in order to work.', 'woocommerce-multilingual'), 'https://bbpress.org/', 'bbPress' ); ?></p></div>
 	<?php
 	}
 	
