@@ -60,8 +60,8 @@ class Elm_Ratings_For_BBPress {
 	 *
      */
 	function bbp_theme_after_reply_author_details() {
-		$reply_author_id = get_post_field( 'post_author', $post_id );
-		$user_data = get_userdata( $reply_author_id );
+		$reply_author_id = get_post_field( 'post_author', (int) $post_id );
+		$user_data = get_userdata( (int) $reply_author_id );
 		
 		$rated_num = (int) get_user_meta( $user_data->ID, '_rated_num', true ); 
 		$user_total_rating = (int) get_user_meta( $user_data->ID, '_total_ratings', true ); 
@@ -91,8 +91,8 @@ class Elm_Ratings_For_BBPress {
 		$post_id = explode( '-', esc_attr( $post['post_id'] ) );
         $post_id = $post_id[1];
 		
-		$reply_author_id = get_post_field( 'post_author', $post_id );
-		$user_data = get_userdata( $reply_author_id );
+		$reply_author_id = get_post_field( 'post_author', (int) $post_id );
+		$user_data = get_userdata( (int) $reply_author_id );
 		
 		$rating_value = esc_attr( $post['value'] );
 		
