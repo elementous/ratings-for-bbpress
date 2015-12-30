@@ -18,13 +18,13 @@ class Elm_BBP_UR_Settings {
      */
 	function process_bbp_forms() {
 		 if ( isset( $_POST['elm_save_ur_bbpress_general'] ) && check_admin_referer( 'elm_ur_settings_bbpress_action', 'elm_ur_settings_bbpress_nonce' ) ) {
-			 $this->settings['allow_bbp_ur'] = esc_attr( $_POST['allow_bbp_ur'] );
+			 $this->settings['allow_bbp_ur'] = intval( $_POST['allow_bbp_ur'] );
 			 
-			 $this->settings['bbp_location']['before_reply_content'] = esc_attr( $_POST['bbp_location']['before_reply_content'] );
-			 $this->settings['bbp_location']['after_reply_content'] = esc_attr( $_POST['bbp_location']['after_reply_content'] );
-			 $this->settings['user_rating_stats']['bbpress_profile_page'] = esc_attr( $_POST['user_rating_stats']['bbpress_profile_page'] );
-			 $this->settings['user_rating_stats']['below_reply_author'] = esc_attr( $_POST['user_rating_stats']['below_reply_author'] );
-			 $this->settings['rating_stats_template'] = esc_attr( $_POST['rating_stats_template'] );
+			 $this->settings['bbp_location']['before_reply_content'] = intval( $_POST['bbp_location']['before_reply_content'] );
+			 $this->settings['bbp_location']['after_reply_content'] = intval( $_POST['bbp_location']['after_reply_content'] );
+			 $this->settings['user_rating_stats']['bbpress_profile_page'] = intval( $_POST['user_rating_stats']['bbpress_profile_page'] );
+			 $this->settings['user_rating_stats']['below_reply_author'] = intval( $_POST['user_rating_stats']['below_reply_author'] );
+			 $this->settings['rating_stats_template'] = wp_kses_post( $_POST['rating_stats_template'] );
 			 
 			 $this->save_settings();
 			 
