@@ -8,7 +8,7 @@
   Version: 1.1
 */
 
-define( 'ELM_BBP_VERSION', '1.0.0' );
+define( 'ELM_BBP_VERSION', '1.1' );
 define( 'ELM_BBP_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'ELM_BBP_PLUGIN_FOLDER', basename( ELM_BBP_PLUGIN_PATH ) );
 define( 'ELM_BBP_PLUGIN_URL', plugins_url() . '/' . ELM_BBP_PLUGIN_FOLDER );
