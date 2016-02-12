@@ -51,6 +51,7 @@ class Elm_Ratings_For_BBPress {
 	function get_custom_post_types_filter( $types ) {
 		unset( $types['topic'] );
 		unset( $types['forum'] );
+		unset( $types['reply'] );
 		
 		return $types;
 	}
@@ -60,7 +61,9 @@ class Elm_Ratings_For_BBPress {
 	 *
      */
 	function bbp_theme_after_reply_author_details() {
-		$reply_author_id = get_post_field( 'post_author', (int) $post_id );
+		global $post;
+
+		$reply_author_id = get_post_field( 'post_author', (int) $post->ID );
 		$user_data = get_userdata( (int) $reply_author_id );
 		
 		$rated_num = (int) get_user_meta( $user_data->ID, '_rated_num', true ); 
@@ -88,13 +91,13 @@ class Elm_Ratings_For_BBPress {
      */
 	function add_rating_ajax_callback( $post ) {
 		
-		$post_id = explode( '-', esc_attr( $post['post_id'] ) );
+		$post_id = explode( '-', sanitize_text_field( $post['post_id'] ) );
         $post_id = $post_id[1];
 		
 		$reply_author_id = get_post_field( 'post_author', (int) $post_id );
 		$user_data = get_userdata( (int) $reply_author_id );
 		
-		$rating_value = esc_attr( $post['value'] );
+		$rating_value = intval( $post['value'] );
 		
 		// Update the total number of ratings
 		$rated_num = (int) get_user_meta( $user_data->ID, '_rated_num', true ); 
