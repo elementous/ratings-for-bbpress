@@ -54,5 +54,9 @@ Yes. Rating Manager allows you to change rating form icons, colors and size of i
 
 == Changelog ==
 
-= 1.0 =
+= 1.1 =
+* Fixed PHP notices 
+* Data sanitizing 
+
+= 1.0.0 =
 * Initial release.

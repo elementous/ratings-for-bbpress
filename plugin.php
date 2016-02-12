@@ -5,7 +5,7 @@
   Description: Adds compatibility beetween Ratings Manager and bbPress plugin.
   Author: Elementous
   Author URI: https://www.elementous.com
-  Version: 1.0.0
+  Version: 1.1
 */
 
 define( 'ELM_BBP_VERSION', '1.0.0' );
